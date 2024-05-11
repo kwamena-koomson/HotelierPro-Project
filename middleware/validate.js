@@ -1,25 +1,26 @@
-const validator = require('../helpers/validate');
+const validator = require('../helpers/validate'); // Import validator helper module
 
+// Middleware function to validate movie data before saving
 const saveMovie = (req, res, next) => {
     const validationRule = {
-      title: 'required|string',
-      release_date: 'required|string',
-      genre: 'required|string',
-      director: 'required|string'
+      title: 'required|string', // Title must be a non-empty string
+      release_date: 'required|string', // Release date must be a non-empty string
+      genre: 'required|string', // Genre must be a non-empty string
+      director: 'required|string' // Director must be a non-empty string
     };
     validator(req.body, validationRule, {}, (err, status) => {
-      if (!status) {
+      if (!status) { // If validation fails
         res.status(412).send({
           success: false,
           message: 'Validation failed',
-          data: err
+          data: err // Send validation errors as response
         });
-      } else {
-        next();
+      } else { // If validation passes
+        next(); // Proceed to the next middleware
       }
     });
   };
   
   module.exports = {
-    saveMovie
+    saveMovie // Export the middleware function
   };
