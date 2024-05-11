@@ -1,67 +1,181 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "Movie API",
-      "description": "API for managing movies"
-    },
-    "paths": {
-      "/movies": {
-        "get": {
-          "summary": "Retrieve all movies",
-          "responses": {
-            "200": {
-              "description": "A list of movies"
-            }
-          }
-        },
-        "post": {
-          "summary": "Add a new movie",
-          "parameters": [
-            {
-              "name": "movie",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Movie"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Successfully added a new movie"
-            }
+  "swagger": "2.0",
+  "info": {
+    "title": "Movies API",
+    "description": "Movies API",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Hello World"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
     },
-    "definitions": {
-      "Movie": {
-        "type": "object",
-        "properties": {
-          "title": {
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/movies": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "release_date": {
+                  "example": "any"
+                },
+                "genre": {
+                  "example": "any"
+                },
+                "director": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/movies/{id}": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
             "type": "string"
           },
-          "director": {
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "release_date": {
+                  "example": "any"
+                },
+                "genre": {
+                  "example": "any"
+                },
+                "director": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
           },
-          "genre": {
-            "type": "string"
-          },
-          "year": {
-            "type": "integer"
-          },
-          "rating": {
-            "type": "number"
-          },
-          "duration": {
-            "type": "integer"
-          },
-          "plot": {
-            "type": "string"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     }
   }
-  
+}
