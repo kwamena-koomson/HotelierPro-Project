@@ -1,6 +1,8 @@
-node_modules
+# Ignore node_modules directory
+node_modules/
+
+# Ignore .env files
 .env
 
-.env
-
-.eslintrc.json
+# Ignore ESLint configuration file
+.eslintrc.js
