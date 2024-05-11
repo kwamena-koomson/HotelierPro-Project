@@ -1,0 +1,67 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Movie API",
+      "description": "API for managing movies"
+    },
+    "paths": {
+      "/movies": {
+        "get": {
+          "summary": "Retrieve all movies",
+          "responses": {
+            "200": {
+              "description": "A list of movies"
+            }
+          }
+        },
+        "post": {
+          "summary": "Add a new movie",
+          "parameters": [
+            {
+              "name": "movie",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Movie"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Successfully added a new movie"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Movie": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "director": {
+            "type": "string"
+          },
+          "genre": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "rating": {
+            "type": "number"
+          },
+          "duration": {
+            "type": "integer"
+          },
+          "plot": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  
