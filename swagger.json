@@ -5,7 +5,7 @@
     "description": "Movies API",
     "version": "1.0.0"
   },
-  "host": "localhost:8000",
+  "host": "localhost:8888",
   "basePath": "/",
   "schemes": [
     "http",
