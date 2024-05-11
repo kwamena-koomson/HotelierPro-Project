@@ -1,23 +1,24 @@
 /* eslint-disable no-undef */
-const dotenv = require("dotenv"); // Import dotenv library for environment variables
-dotenv.config(); // Load environment variables from .env file
+
+const dotenv = require("dotenv"); 
+dotenv.config(); 
 const MongoClient = require("mongodb").MongoClient; // Import MongoClient for MongoDB connection
 
-let database; // Variable to hold the database connection
+let database; 
 
 // Function to initialize the database connection
 const initDb = (callback) => {
-  if (database) { // If database connection exists
-    console.log("DB is already Initialized!"); // Log message indicating database is already initialized
-    return callback(null, database); // Invoke the callback with existing database connection
+  if (database) { 
+    console.log("DB is already Initialized!"); 
+    return callback(null, database); 
   }
   MongoClient.connect(process.env.MONGODB_URL) // Connect to MongoDB using the provided URL from environment variables
     .then((client) => {
-      database = client; // Store the database connection
-      callback(null, database); // Invoke the callback with database connection
+      database = client; 
+      callback(null, database); 
     })
     .catch((err) => {
-      callback(err); // If an error occurs during database connection, invoke the callback with the error
+      callback(err); 
     });
 };
 
@@ -30,6 +31,6 @@ const getDatabase = () => {
 };
 
 module.exports = {
-  initDb, // Export the initDb function to initialize the database connection
-  getDatabase, // Export the getDatabase function to get the database connection
+  initDb, 
+  getDatabase, 
 };
