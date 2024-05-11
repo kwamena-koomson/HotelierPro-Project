@@ -1,13 +1,13 @@
 ### Get all contacts from 
-localhost GET http://localhost:1024/movies
+localhost GET http://localhost:8888/movies
 
 ### Get contact by id from localhost 
-GET http://localhost:1024/contacts/662e7ef3c599b8a358ba83ab
+GET http://localhost:8888/movies/663f393a7dfa6a42740939fb
 
 ### Get all contacts from render 
-GET https://cse341-nmog.onrender.com/contacts
+GET https://cse341-p2-jvhe.onrender.com/movies
 
 ### Get contact by id from render 
-GET https://cse341-nmog.onrender.com/contacts/662e7ef3c599b8a358ba83ab
+GET https://cse341-p2-jvhe.onrender.com/movies/663f39687dfa6a42740939fc
 
 
