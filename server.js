@@ -34,6 +34,7 @@ app
   .use(cors({ origin: '*' }))
   .use('/', require('./routes/index.js'));
 
+
 passport.use(
   new GitHubStrategy(
     {
@@ -48,6 +49,7 @@ passport.use(
     }
   )
 );
+
 
 passport.serializeUser((user, done) => {
   done(null, user);

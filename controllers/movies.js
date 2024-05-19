@@ -38,14 +38,14 @@ const createMovie = async (req, res) => { // POST Request
   if (response.acknowledged) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'Some error occurred while creating the movie.');
+    res.status(500).json(response.error || 'An occurred while creating the movie.');
   }
 };
 
 const updateMovie = async (req, res) => { // PUT Request
   //#swagger.tags=['Movies']
   if(!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must have a valid movie id to update a movie');
+    res.status(400).json('You must have a valid movieid to update a movie');
   }
   const movieId = new ObjectId(req.params.id);
   const movie = {
@@ -65,14 +65,14 @@ const updateMovie = async (req, res) => { // PUT Request
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'Some error occurred while updating the movie.');
+    res.status(500).json(response.error || 'An error occurred while updating the movie.');
   }
 };
 
 const deleteMovie = async (req, res) => { // DELETE Request
   //#swagger.tags=['Movies']
   if(!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must have a valid movie id to delete a movie');
+    res.status(400).json('You must have a valid movieid to delete a movie');
   }
   const movieId = new ObjectId(req.params.id);
   const response = await mongodb
@@ -83,7 +83,7 @@ const deleteMovie = async (req, res) => { // DELETE Request
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'Some error occurred while deleting the movie.');
+    res.status(500).json(response.error || 'An error occurred while deleting the movie.');
   }
 };
 

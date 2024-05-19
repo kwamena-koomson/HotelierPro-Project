@@ -13,7 +13,7 @@ const getAllPremiumShows = async (req, res) => {
 const getSinglePremiumShow = async (req, res) => {
   //#swagger.tags=['PremiumShows']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must have a valid show id to get a single premium show');
+    res.status(400).json('You must have a valid showid to get a single premium show');
   }
   const showId = new ObjectId(req.params.id);
   const result = await mongodb.getDatabase().db().collection('premium_shows').find({ _id: showId });
@@ -37,16 +37,16 @@ const createPremiumShow = async (req, res) => {
   };
   const response = await mongodb.getDatabase().db().collection('premium_shows').insertOne(premiumShow);
   if (response.acknowledged) {
-    res.status(201).send(); // Changed to 201 to indicate a resource has been created
+    res.status(201).send(); 
   } else {
-    res.status(500).json(response.error || 'Some error occurred while creating the premium show.');
+    res.status(500).json(response.error || 'An error occurred while creating the premium show.');
   }
 };
 
 const updatePremiumShow = async (req, res) => {
   //#swagger.tags=['PremiumShows']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must have a valid show id to update a premium show');
+    res.status(400).json('You must have a valid showid to update a premium show');
   }
   const showId = new ObjectId(req.params.id);
   const premiumShow = {
@@ -67,14 +67,14 @@ const updatePremiumShow = async (req, res) => {
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'Some error occurred while updating the premium show.');
+    res.status(500).json(response.error || 'An error occurred while updating the premium show.');
   }
 };
 
 const deletePremiumShow = async (req, res) => {
   //#swagger.tags=['PremiumShows']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must have a valid show id to delete a premium show');
+    res.status(400).json('You must have a valid showid to delete a premium show');
   }
   const showId = new ObjectId(req.params.id);
   const response = await mongodb
@@ -85,7 +85,7 @@ const deletePremiumShow = async (req, res) => {
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'Some error occurred while deleting the premium show.');
+    res.status(500).json(response.error || 'An error occurred while deleting the premium show.');
   }
 };
 

@@ -30,7 +30,7 @@ const savePremiumShow = (req, res, next) => {
     director: 'required|string',
     genre: 'required|string',
     IDMb_Rating: 'required|integer',
-    cast: 'required|array', // Assuming cast is an array of strings
+    cast: 'required|array', 
     country: 'required|string',
     Seasons: 'required|integer'
   };
