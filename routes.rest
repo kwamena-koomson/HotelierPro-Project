@@ -1,5 +1,5 @@
 ### Get all contacts from 
-localhost GET http://localhost:8888/movies
+localhost GET http://localhost:8888
 
 ### Get contact by id from localhost 
 GET http://localhost:8888/movies/663f393a7dfa6a42740939fb

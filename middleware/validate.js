@@ -1,26 +1,53 @@
-const validator = require('../helpers/validate'); 
+const validator = require('../helpers/validate');
 
-// Middleware function to validate movie data before saving
 const saveMovie = (req, res, next) => {
     const validationRule = {
-      title: 'required|string', 
-      release_date: 'required|string', 
-      genre: 'required|string', 
-      director: 'required|string' 
+      title: 'required|string',
+      director: 'required|string',
+      genre: 'required|string',
+      year: 'required|integer',
+      rating: 'required|integer',
+      duration: 'required|integer',
+      plot: 'required|string'
     };
     validator(req.body, validationRule, {}, (err, status) => {
-      if (!status) { 
+      if (!status) {
         res.status(412).send({
           success: false,
           message: 'Validation failed',
-          data: err 
+          data: err
         });
-      } else { 
-        next(); 
+      } else {
+        next();
       }
     });
+};
+
+const savePremiumShow = (req, res, next) => {
+  const validationRule = {
+    title: 'required|string',
+    year: 'required|integer',
+    director: 'required|string',
+    genre: 'required|string',
+    IDMb_Rating: 'required|integer',
+    cast: 'required|array', // Assuming cast is an array of strings
+    country: 'required|string',
+    Seasons: 'required|integer'
   };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
   
-  module.exports = {
-    saveMovie 
-  };
+module.exports = {
+  saveMovie,
+  savePremiumShow
+};
