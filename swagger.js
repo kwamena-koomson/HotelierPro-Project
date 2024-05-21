@@ -4,7 +4,7 @@ const doc = {
         title: 'Movies & Shows API', 
         description: 'This is an API for movies and shows' 
     },
-    host: 'localhost:8888', 
+    host: 'cse341-p2-jvhe.onrender.com/', 
     schemes: ['http', 'https'],
     securityDefinitions: { // Add security definitions for OAuth2
       githubOAuth: {
