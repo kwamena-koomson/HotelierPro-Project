@@ -1,31 +1,31 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAllPremiumShows = async (req, res) => {
-  //#swagger.tags=['PremiumShows']
-  const result = await mongodb.getDatabase().db().collection('premium_shows').find();
-  result.toArray().then((premiumShows) => {
+const getAllShows = async (req, res) => {
+  //#swagger.tags=['Shows']
+  const result = await mongodb.getDatabase().db().collection('shows').find();
+  result.toArray().then((shows) => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(premiumShows);
+    res.status(200).json(shows);
   });
 };
 
-const getSinglePremiumShow = async (req, res) => {
-  //#swagger.tags=['PremiumShows']
+const getSingleShow = async (req, res) => {
+  //#swagger.tags=['Shows']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('You must have a valid showid to get a single premium show');
+    res.status(400).json('You must have a valid showid to get a single show');
   }
   const showId = new ObjectId(req.params.id);
-  const result = await mongodb.getDatabase().db().collection('premium_shows').find({ _id: showId });
-  result.toArray().then((premiumShows) => {
+  const result = await mongodb.getDatabase().db().collection('shows').find({ _id: showId });
+  result.toArray().then((shows) => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(premiumShows);
+    res.status(200).json(shows);
   });
 };
 
-const createPremiumShow = async (req, res) => {
-  //#swagger.tags=['PremiumShows']
-  const premiumShow = {
+const createShow = async (req, res) => {
+  //#swagger.tags=['Shows']
+  const show = {
     title: req.body.title,
     year: req.body.year,
     director: req.body.director,
@@ -35,21 +35,21 @@ const createPremiumShow = async (req, res) => {
     country: req.body.country,
     Seasons: req.body.Seasons,   
   };
-  const response = await mongodb.getDatabase().db().collection('premium_shows').insertOne(premiumShow);
+  const response = await mongodb.getDatabase().db().collection('shows').insertOne(show);
   if (response.acknowledged) {
     res.status(201).send(); 
   } else {
-    res.status(500).json(response.error || 'An error occurred while creating the premium show.');
+    res.status(500).json(response.error || 'An error occurred while creating the show.');
   }
 };
 
-const updatePremiumShow = async (req, res) => {
-  //#swagger.tags=['PremiumShows']
+const updateShow = async (req, res) => {
+  //#swagger.tags=['Shows']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('You must have a valid showid to update a premium show');
+    res.status(400).json('You must have a valid showid to update a show');
   }
   const showId = new ObjectId(req.params.id);
-  const premiumShow = {
+  const show = {
     title: req.body.title,
     year: req.body.year,
     director: req.body.director,
@@ -62,37 +62,37 @@ const updatePremiumShow = async (req, res) => {
   const response = await mongodb
     .getDatabase()
     .db()
-    .collection('premium_shows')
-    .replaceOne({ _id: showId }, premiumShow);
+    .collection('shows')
+    .replaceOne({ _id: showId }, show);
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'An error occurred while updating the premium show.');
+    res.status(500).json(response.error || 'An error occurred while updating the show.');
   }
 };
 
-const deletePremiumShow = async (req, res) => {
-  //#swagger.tags=['PremiumShows']
+const deleteShow = async (req, res) => {
+  //#swagger.tags=['Shows']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('You must have a valid showid to delete a premium show');
+    res.status(400).json('You must have a valid showid to delete a show');
   }
   const showId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDatabase()
     .db()
-    .collection('premium_shows')
+    .collection('shows')
     .deleteOne({ _id: showId });
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'An error occurred while deleting the premium show.');
+    res.status(500).json(response.error || 'An error occurred while deleting the show.');
   }
 };
 
 module.exports = {
-    getAllPremiumShows,
-    getSinglePremiumShow,
-    createPremiumShow,
-    updatePremiumShow,
-    deletePremiumShow
+  getAllShows,
+  getSingleShow,
+  createShow,
+  updateShow,
+  deleteShow
 };
