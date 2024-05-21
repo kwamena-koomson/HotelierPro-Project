@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+require('dotenv').config(); // Add this line
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./data/database.js');
@@ -24,7 +24,7 @@ app
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
-      'Access-Controll-Allow-Headers',
+      'Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization'
     );
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, OPTIONS, DELETE');
@@ -33,7 +33,6 @@ app
   .use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }))
   .use(cors({ origin: '*' }))
   .use('/', require('./routes/index.js'));
-
 
 passport.use(
   new GitHubStrategy(
@@ -49,7 +48,6 @@ passport.use(
     }
   )
 );
-
 
 passport.serializeUser((user, done) => {
   done(null, user);
