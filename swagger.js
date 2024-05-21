@@ -5,7 +5,19 @@ const doc = {
         description: 'This is an API for movies and shows' 
     },
     host: 'localhost:8888', 
-    schemes: ['http', 'https'] 
+    schemes: ['http', 'https'],
+    securityDefinitions: { // Add security definitions for OAuth2
+      githubOAuth: {
+        type: 'oauth2',
+        flow: 'accessCode',
+        authorizationUrl: 'https://github.com/login/oauth/authorize',
+        tokenUrl: 'https://github.com/login/oauth/access_token',
+        scopes: {
+          read: 'Grants read access',
+          write: 'Grants write access'
+        }
+      }
+    }
 };
 
 const outputFile = './swagger.json'; 

@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Movies & Shows API",
-    "description": "This is an API for movies and hows",
+    "description": "This is an API for movies and shows",
     "version": "1.0.0"
   },
   "host": "localhost:8888",
@@ -11,6 +11,18 @@
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "githubOAuth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://github.com/login/oauth/authorize",
+      "tokenUrl": "https://github.com/login/oauth/access_token",
+      "scopes": {
+        "read": "Grants read access",
+        "write": "Grants write access"
+      }
+    }
+  },
   "paths": {
     "/": {
       "get": {
