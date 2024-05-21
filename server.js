@@ -1,4 +1,8 @@
-require('dotenv').config(); // Add this line
+require('dotenv').config();
+console.log('GITHUB_CLIENT_ID:', process.env.GITHUB_CLIENT_ID);
+console.log('GITHUB_CLIENT_SECRET:', process.env.GITHUB_CLIENT_SECRET);
+console.log('CALLBACK_URL:', process.env.CALLBACK_URL);
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./data/database.js');
@@ -42,9 +46,7 @@ passport.use(
       callbackURL: process.env.CALLBACK_URL
     },
     function (accessToken, refreshToken, profile, done) {
-      //User.findOrCreate({ githubId: profile.id }, function (err, user) {
       return done(null, profile);
-      //});
     }
   )
 );
