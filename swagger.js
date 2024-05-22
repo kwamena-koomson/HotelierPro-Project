@@ -4,8 +4,8 @@ const doc = {
         title: 'Movies & Shows API', 
         description: 'This is an API for movies and shows' 
     },
-    host: 'localhost:8888', 
-    schemes: ['http', 'https'],
+    host: 'cse341-p2-jvhe.onrender.com',  // Update this to your Render site domain
+    schemes: ['https'], // Use https as Render site uses https
     securityDefinitions: { // Add security definitions for OAuth2
       githubOAuth: {
         type: 'oauth2',

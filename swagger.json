@@ -5,10 +5,9 @@
     "description": "This is an API for movies and shows",
     "version": "1.0.0"
   },
-  "host": "cse-341-project2-h43q.onrender.com",
+  "host": "cse341-p2-jvhe.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "securityDefinitions": {
