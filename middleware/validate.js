@@ -1,14 +1,14 @@
 const validator = require('../helpers/validate');
 
-const saveMovie = (req, res, next) => {
+const saveBooking = (req, res, next) => {
   const validationRule = {
-    title: 'required|string',
-    director: 'required|string',
-    genre: 'required|string',
-    year: 'required|integer',
-    rating: 'required|integer',
-    duration: 'required|integer',
-    plot: 'required|string'
+    clientId: 'required|string',
+    hotelId: 'required|string',
+    checkInDate: 'required|string',
+    checkOutDate: 'required|string',
+    roomType: 'required|string',
+    numOfGuests: 'required|integer',
+    totalPrice: 'required|integer'
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -23,16 +23,61 @@ const saveMovie = (req, res, next) => {
   });
 };
 
-const saveShow = (req, res, next) => {
+const saveClient = (req, res, next) => {
   const validationRule = {
-    title: 'required|string',
-    year: 'required|integer',
-    director: 'required|string',
-    genre: 'required|string',
-    IDMb_Rating: 'required|integer',
-    cast: 'required|array', 
-    country: 'required|string',
-    Seasons: 'required|integer'
+    username: 'required|string',
+    name: 'required|string',
+    address: 'required|string',
+    birthdate: 'required|string',
+    email: 'required|email',
+    membershipStatus: 'required|string',
+    membershipTier: 'required|string'
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const saveHotel = (req, res, next) => {
+  const validationRule = {
+    name: 'required|string',
+    location: 'required|string',
+    rating: 'required|integer',
+    roomsAvailable: 'required|integer',
+    amenities: 'required|array',
+    pricePerNight: 'required|integer',
+    contactEmail: 'required|email'
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const saveStaff = (req, res, next) => {
+  const validationRule = {
+    name: 'required|string',
+    position: 'required|string',
+    department: 'required|string',
+    email: 'required|email',
+    phone: 'required|string',
+    hireDate: 'required|string',
+    salary: 'required|integer'
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -48,6 +93,8 @@ const saveShow = (req, res, next) => {
 };
 
 module.exports = {
-  saveMovie,
-  saveShow
+  saveBooking,
+  saveClient,
+  saveHotel,
+  saveStaff
 };

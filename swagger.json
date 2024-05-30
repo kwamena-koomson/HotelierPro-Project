@@ -1,25 +1,21 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Movies & Shows API",
-    "description": "This is an API for movies and shows",
+    "title": "HotelierPro API",
+    "description": "This is an API for HotelierPro application, providing endpoints for managing hotels, staff, clients, and bookings.",
     "version": "1.0.0"
   },
-  "host": "cse341-p2-jvhe.onrender.com",
+  "host": "localhost:8888",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "securityDefinitions": {
-    "githubOAuth": {
-      "type": "oauth2",
-      "flow": "accessCode",
-      "authorizationUrl": "https://github.com/login/oauth/authorize",
-      "tokenUrl": "https://github.com/login/oauth/access_token",
-      "scopes": {
-        "read": "Grants read access",
-        "write": "Grants write access"
-      }
+    "apiKey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
     }
   },
   "paths": {
@@ -66,10 +62,10 @@
         }
       }
     },
-    "/movies/": {
+    "/bookings/": {
       "get": {
         "tags": [
-          "Movies"
+          "Bookings"
         ],
         "description": "",
         "produces": [
@@ -83,7 +79,7 @@
       },
       "post": {
         "tags": [
-          "Movies"
+          "Bookings"
         ],
         "description": "",
         "parameters": [
@@ -93,203 +89,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "clientId": {
                   "example": "any"
                 },
-                "director": {
+                "hotelId": {
                   "example": "any"
                 },
-                "genre": {
+                "checkInDate": {
                   "example": "any"
                 },
-                "year": {
+                "checkOutDate": {
                   "example": "any"
                 },
-                "rating": {
+                "roomType": {
                   "example": "any"
                 },
-                "duration": {
+                "numOfGuests": {
                   "example": "any"
                 },
-                "plot": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "412": {
-            "description": "Precondition Failed"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/movies/{id}": {
-      "get": {
-        "tags": [
-          "Movies"
-        ],
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Movies"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "director": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                },
-                "year": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                },
-                "duration": {
-                  "example": "any"
-                },
-                "plot": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "412": {
-            "description": "Precondition Failed"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Movies"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/shows/": {
-      "get": {
-        "tags": [
-          "Shows"
-        ],
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Shows"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "year": {
-                  "example": "any"
-                },
-                "director": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                },
-                "IDMb_Rating": {
-                  "example": "any"
-                },
-                "cast": {
-                  "example": "any"
-                },
-                "country": {
-                  "example": "any"
-                },
-                "Seasons": {
+                "totalPrice": {
                   "example": "any"
                 }
               }
@@ -300,9 +118,6 @@
           "201": {
             "description": "Created"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "412": {
             "description": "Precondition Failed"
           },
@@ -312,10 +127,10 @@
         }
       }
     },
-    "/shows/{id}": {
+    "/bookings/{id}": {
       "get": {
         "tags": [
-          "Shows"
+          "Bookings"
         ],
         "description": "",
         "produces": [
@@ -340,7 +155,7 @@
       },
       "put": {
         "tags": [
-          "Shows"
+          "Bookings"
         ],
         "description": "",
         "parameters": [
@@ -356,28 +171,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "clientId": {
                   "example": "any"
                 },
-                "year": {
+                "hotelId": {
                   "example": "any"
                 },
-                "director": {
+                "checkInDate": {
                   "example": "any"
                 },
-                "genre": {
+                "checkOutDate": {
                   "example": "any"
                 },
-                "IDMb_Rating": {
+                "roomType": {
                   "example": "any"
                 },
-                "cast": {
+                "numOfGuests": {
                   "example": "any"
                 },
-                "country": {
-                  "example": "any"
-                },
-                "Seasons": {
+                "totalPrice": {
                   "example": "any"
                 }
               }
@@ -391,9 +203,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "412": {
             "description": "Precondition Failed"
           },
@@ -404,7 +213,7 @@
       },
       "delete": {
         "tags": [
-          "Shows"
+          "Bookings"
         ],
         "description": "",
         "parameters": [
@@ -422,8 +231,530 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/clients/": {
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Clients"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "birthdate": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "membershipStatus": {
+                  "example": "any"
+                },
+                "membershipTier": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/clients/{id}": {
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Clients"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "birthdate": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "membershipStatus": {
+                  "example": "any"
+                },
+                "membershipTier": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Clients"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hotels/": {
+      "get": {
+        "tags": [
+          "Hotels"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Hotels"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "location": {
+                  "example": "any"
+                },
+                "rating": {
+                  "example": "any"
+                },
+                "roomsAvailable": {
+                  "example": "any"
+                },
+                "amenities": {
+                  "example": "any"
+                },
+                "pricePerNight": {
+                  "example": "any"
+                },
+                "contactEmail": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hotels/{id}": {
+      "get": {
+        "tags": [
+          "Hotels"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Hotels"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "location": {
+                  "example": "any"
+                },
+                "rating": {
+                  "example": "any"
+                },
+                "roomsAvailable": {
+                  "example": "any"
+                },
+                "amenities": {
+                  "example": "any"
+                },
+                "pricePerNight": {
+                  "example": "any"
+                },
+                "contactEmail": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Hotels"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/staff/": {
+      "get": {
+        "tags": [
+          "Staff"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Staff"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "position": {
+                  "example": "any"
+                },
+                "department": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "hireDate": {
+                  "example": "any"
+                },
+                "salary": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/staff/{id}": {
+      "get": {
+        "tags": [
+          "Staff"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Staff"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "position": {
+                  "example": "any"
+                },
+                "department": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "hireDate": {
+                  "example": "any"
+                },
+                "salary": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Staff"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"

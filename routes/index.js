@@ -4,14 +4,18 @@ const router = require("express").Router();
 
 router.use('/', require('./swagger'));
 
-// router.get("/", (req, res) => {
-//   //#swagger.tags=['Hello World']
-//   res.send("Hello World");
-// });
+router.get("/", (req, res) => {
+  //#swagger.tags=['Hello World']
+  res.send("Hello World");
+});
 
-router.use('/movies', require('./movies'));
+router.use('/bookings', require('./bookings'));
 
-router.use('/shows', require('./shows'));
+router.use('/clients', require('./clients'));
+
+router.use('/hotels', require('./hotels'));
+
+router.use('/staff', require('./staff'));
 
 router.get('/login', passport.authenticate('github'), (req, res) => {});
 
