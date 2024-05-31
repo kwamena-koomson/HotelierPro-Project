@@ -8,7 +8,6 @@
   "host": "hotelierpro-project.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "securityDefinitions": {
@@ -24,19 +23,6 @@
     }
   },
   "paths": {
-    "/": {
-      "get": {
-        "tags": [
-          "Welcome to HotelierPro"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/login": {
       "get": {
         "description": "",
@@ -94,12 +80,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "clientId": {
-                  "example": "any"
-                },
-                "hotelId": {
-                  "example": "any"
-                },
                 "checkInDate": {
                   "example": "any"
                 },
@@ -109,10 +89,16 @@
                 "roomType": {
                   "example": "any"
                 },
+                "roomNumber": {
+                  "example": "any"
+                },
                 "numOfGuests": {
                   "example": "any"
                 },
                 "totalPrice": {
+                  "example": "any"
+                },
+                "bookingDate": {
                   "example": "any"
                 }
               }
@@ -176,12 +162,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "clientId": {
-                  "example": "any"
-                },
-                "hotelId": {
-                  "example": "any"
-                },
                 "checkInDate": {
                   "example": "any"
                 },
@@ -191,10 +171,16 @@
                 "roomType": {
                   "example": "any"
                 },
+                "roomNumber": {
+                  "example": "any"
+                },
                 "numOfGuests": {
                   "example": "any"
                 },
                 "totalPrice": {
+                  "example": "any"
+                },
+                "bookingDate": {
                   "example": "any"
                 }
               }
