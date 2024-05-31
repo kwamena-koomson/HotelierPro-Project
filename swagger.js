@@ -6,14 +6,18 @@ const doc = {
     description: 'This is an API for HotelierPro application, providing endpoints for managing hotels, staff, clients, and bookings.',
     version: '1.0.0'
   },
-  host: 'hotel-group-cse341-s88t.onrender.com', // Adjust host based on your environment
-  basePath: '/',
-  schemes: ['http', 'https'], // Use http or https based on your server configuration
+  host: 'hotelierpro-project.onrender.com', 
+  schemes: ['https'], 
   securityDefinitions: {
-    apiKey: {
-      type: 'apiKey',
-      in: 'header',
-      name: 'Authorization'
+    githubOAuth: {
+      type: 'oauth2',
+      flow: 'accessCode',
+      authorizationUrl: 'https://github.com/login/oauth/authorize',
+      tokenUrl: 'https://github.com/login/oauth/access_token',
+      scopes: {
+        read: 'Grants read access',
+        write: 'Grants write access'
+      }
     }
   }
 };

@@ -26,13 +26,13 @@ const getSingle = async (req, res) => { // GET Request
 const createBooking = async (req, res) => { // POST Request
   //#swagger.tags=['Bookings']
   const booking = {
-    clientId: new ObjectId(req.body.clientId),
-    hotelId: new ObjectId(req.body.hotelId),
     checkInDate: req.body.checkInDate,
     checkOutDate: req.body.checkOutDate,
     roomType: req.body.roomType,
+    roomNumber : req.body.roomNumber,
     numOfGuests: req.body.numOfGuests,
-    totalPrice: req.body.totalPrice
+    totalPrice: req.body.totalPrice,
+    bookingDate : req.body.bookingDate
   };
   const response = await mongodb.getDatabase().db().collection('bookings').insertOne(booking);
   if (response.acknowledged) {
@@ -49,13 +49,13 @@ const updateBooking = async (req, res) => { // PUT Request
   }
   const bookingId = new ObjectId(req.params.id);
   const booking = {
-    clientId: new ObjectId(req.body.clientId),
-    hotelId: new ObjectId(req.body.hotelId),
     checkInDate: req.body.checkInDate,
     checkOutDate: req.body.checkOutDate,
     roomType: req.body.roomType,
+    roomNumber : req.body.roomNumber,
     numOfGuests: req.body.numOfGuests,
-    totalPrice: req.body.totalPrice
+    totalPrice: req.body.totalPrice,
+    bookingDate : req.body.bookingDate
   };
   const response = await mongodb
     .getDatabase()

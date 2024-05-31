@@ -1,13 +1,51 @@
-### Get all contacts from 
-localhost GET http://localhost:8888
+### Hotels
+### Get all hotels from localhost
+GET http://localhost:8888/hotels
 
-### Get contact by id from localhost 
-GET http://localhost:8888/movies/663f393a7dfa6a42740939fb
+### Get hotel by id from localhost
+GET http://localhost:8888/hotels/6659483a4ba8dd92b1032d39
 
-### Get all contacts from render 
-GET https://cse341-p2-jvhe.onrender.com/movies
+### Get all hotels from render
+GET https://hotelierpro-project.onrender.com/hotels
 
-### Get contact by id from render 
-GET https://cse341-p2-jvhe.onrender.com/movies/663f39687dfa6a42740939fc
+### Get hotel by id from render
+GET https://hotelierpro-project.onrender.com/60d5ec49c2a0625f97e11018
 
+### Staff
+### Get all staff from localhost
+GET http://localhost:8888/staff
 
+### Get staff by id from localhost
+GET http://localhost:8888/staff/66594a944ba8dd92b1032d45
+
+### Get all staff from render
+GET https://hotelierpro-project.onrender.com/staff
+
+### Get staff by id from render
+GET https://hotelierpro-project.onrender.com/staff/{staffId}
+
+### Clients
+### Get all clients from localhost
+GET http://localhost:8888/clients
+
+### Get client by id from localhost
+GET http://localhost:8888/clients/66594c694ba8dd92b1032d4d
+
+### Get all clients from render
+GET https://hotelierpro-project.onrender.com/clients
+
+### Get client by id from render
+GET https://hotelierpro-project.onrender.com/{clientId}
+
+### Bookings
+### Get all bookings from localhost
+GET http://localhost:8888/bookings
+
+### Get booking by id from localhost
+GET http://localhost:8888/bookings/665950b94ba8dd92b1032d53
+
+### Get all bookings from render
+GET https://hotelierpro-project.onrender.com/bookings
+
+### Get booking by id from render
+GET https://hotelierpro-project.onrender.com/{bookingId}
