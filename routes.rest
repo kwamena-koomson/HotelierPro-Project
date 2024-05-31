@@ -22,7 +22,7 @@ GET http://localhost:8888/staff/66594a944ba8dd92b1032d45
 GET https://hotelierpro-project.onrender.com/staff
 
 ### Get staff by id from render
-GET https://hotelierpro-project.onrender.com/staff/{staffId}
+GET https://hotelierpro-project.onrender.com/staff/66594a944ba8dd92b1032d45
 
 ### Clients
 ### Get all clients from localhost
@@ -35,7 +35,7 @@ GET http://localhost:8888/clients/66594c694ba8dd92b1032d4d
 GET https://hotelierpro-project.onrender.com/clients
 
 ### Get client by id from render
-GET https://hotelierpro-project.onrender.com/{clientId}
+GET https://hotelierpro-project.onrender.com/66594c694ba8dd92b1032d4d
 
 ### Bookings
 ### Get all bookings from localhost
@@ -48,4 +48,4 @@ GET http://localhost:8888/bookings/665950b94ba8dd92b1032d53
 GET https://hotelierpro-project.onrender.com/bookings
 
 ### Get booking by id from render
-GET https://hotelierpro-project.onrender.com/{bookingId}
+GET https://hotelierpro-project.onrender.com/665950b94ba8dd92b1032d53
