@@ -6,7 +6,7 @@ const doc = {
     description: 'This is an API for HotelierPro application, providing endpoints for managing hotels, staff, clients, and bookings.',
     version: '1.0.0'
   },
-  host: 'cse341-final-project-phmu.onrender.com', 
+  host: 'hotelierpro-project.onrender.com/', 
   schemes: ['https'], 
   securityDefinitions: {
     githubOAuth: {
