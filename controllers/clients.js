@@ -16,11 +16,13 @@ const getSingle = async (req, res) => { // GET Request
     res.status(400).json('Must have a valid client id to get a single client');
   }
   const clientId = new ObjectId(req.params.id);
-  const result = await mongodb.getDatabase().db().collection('clients').find({ _id: clientId });
-  result.toArray().then((clients) => {
+  const result = await mongodb.getDatabase().db().collection('clients').findOne({ _id: clientId }); // Fixed here
+  if (result) {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(clients);
-  });
+    res.status(200).json(result);
+  } else {
+    res.status(404).json('Client not found');
+  }
 };
 
 const createClient = async (req, res) => { // POST Request

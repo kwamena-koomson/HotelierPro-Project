@@ -13,14 +13,15 @@ const getAll = async (req, res) => {  // GET Request
 const getSingle = async (req, res) => { // GET Request
   //#swagger.tags=['Hotels']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must have a valid hotel id to get a single hotel');
+    return res.status(400).json('Must have a valid hotel id to get a single hotel');
   }
   const hotelId = new ObjectId(req.params.id);
-  const result = await mongodb.getDatabase().db().collection('hotels').find({ _id: hotelId });
-  result.toArray().then((hotels) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(hotels);
-  });
+  const result = await mongodb.getDatabase().db().collection('hotels').findOne({ _id: hotelId });
+  if (!result) {
+    return res.status(404).json('Hotel not found');
+  }
+  res.setHeader('Content-Type', 'application/json');
+  res.status(200).json(result);
 };
 
 const createHotel = async (req, res) => { // POST Request
@@ -94,3 +95,5 @@ module.exports = {
   updateHotel,
   deleteHotel
 };
+
+
